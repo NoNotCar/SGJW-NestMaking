@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gui/alerts/jam.png" type="Texture" id=1]
+
+[node name="JamError" type="Node2D" groups=[
+"Errors",
+]]
+z_index = 10
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 0, -16 )

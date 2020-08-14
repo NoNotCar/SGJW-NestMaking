@@ -20,8 +20,7 @@ func _process(delta):
 
 func set_spin(new:int):
 	if spin and new and new!=spin:
-		print(global_position)
-		push_error("TODO: this...: ")
+		registry.jam(self)
 		return
 	elif new==spin:
 		return

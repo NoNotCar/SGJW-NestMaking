@@ -15,6 +15,7 @@ func start():
 	$BeltSeg.spin=1
 
 func stop():
-	spawned.queue_free()
+	if spawned:
+		spawned.queue_free()
 	$BeltSeg.spin=0
 	

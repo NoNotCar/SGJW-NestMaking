@@ -11,7 +11,10 @@ func _input(event):
 		if running:
 			for obj in registry.all_things("run"):
 				obj.stop()
+			for error in get_tree().get_nodes_in_group("Errors"):
+				error.queue_free()
 		else:
+			registry.errored=false
 			for obj in registry.all_things("run"):
 				obj.start()
 			registry.time=0

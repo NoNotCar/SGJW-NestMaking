@@ -12,6 +12,7 @@ var spos: Vector2
 var tpos: Vector2
 var r = 0
 var simpledict = {"gear":gear, "axle": axle}
+var spawndict = {}
 
 func reset_crs():
 	$CrosshairTL.position=Vector2(-8,-8)
@@ -48,6 +49,10 @@ func _input(event):
 					place()
 					reset_crs()
 					dragging=false
+		elif event.button_index==BUTTON_RIGHT:
+			if event.pressed:
+				if tpos in spawndict and spawndict[tpos]:
+					spawndict[tpos].queue_free()
 func inline_pos(pos2):
 	if abs(pos2.x-fpos.x)>abs(pos2.y-fpos.y):
 		return Vector2(pos2.x,fpos.y)
@@ -85,6 +90,8 @@ func place():
 					new.rotation=0 if ipos.y==fpos.y else PI/2
 					new.length=(ipos-fpos).length()+1
 					get_parent().add_child(new)
+					for p in lib.iterrow(fpos,ipos):
+						spawndict[p]=new
 func smart_place(thing:PackedScene,tpos:Vector2):
 	for b in registry.find("blocked",tpos):
 		return
@@ -92,3 +99,4 @@ func smart_place(thing:PackedScene,tpos:Vector2):
 	new.position=tpos*16
 	new.rotation=r%4*TAU/4
 	get_parent().add_child(new)
+	spawndict[tpos]=new

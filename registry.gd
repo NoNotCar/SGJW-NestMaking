@@ -8,6 +8,8 @@ var _reg:={}
 var lookup:={}
 var time=0
 var placing = "gear"
+var errored:=false
+const jam = preload("res://gui/alerts/JamError.tscn")
 const TILESIZE = Vector2(16,16)
 
 # Called when the node enters the scene tree for the first time.
@@ -60,7 +62,13 @@ func unregister(what:Node2D):
 	for lp in lookup[what]:
 		_reg[lp[0]][lp[1]].erase(what)
 	lookup.erase(what)
+func jam(node:Node2D):
+	var new = jam.instance()
+	node.add_child(new)
+	new.global_rotation=0
+	errored=true
 func _process(delta):
-	time+=delta
+	if not errored:
+		time+=delta
 func tile_pos(pos:Vector2)->Vector2:
 	return (pos/TILESIZE).snapped(Vector2.ONE)

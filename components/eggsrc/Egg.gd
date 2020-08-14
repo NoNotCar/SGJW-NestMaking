@@ -12,12 +12,19 @@ func _ready():
 
 
 func check():
+	if registry.errored:
+		return
 	for belt in registry.find("belt",registry.tile_pos(global_position)):
 		var dir = lib.point(belt,Vector2.RIGHT)*belt.spin
 		if dir:
-			$Tween.interpolate_property(self,"position",position,position+dir*16,belt.spin,Tween.TRANS_LINEAR)
+			$Tween.interpolate_property(self,"position",position,position+dir*16,abs(belt.spin),Tween.TRANS_LINEAR)
 			$Tween.start()
 		return
+	for nest in registry.find("nest",registry.tile_pos(global_position)):
+		nest.eggs+=1
+		queue_free()
+		return
+	$Sprite.frame=1
 
 
 func _on_tween_all_completed():
