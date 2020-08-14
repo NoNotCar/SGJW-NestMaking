@@ -30,6 +30,7 @@ func _process(delta):
 		$CrosshairTR.global_position=Vector2(max(tpos.x,fpos.x)*16+8,min(tpos.y,fpos.y)*16-8)
 		$CrosshairBL.global_position=Vector2(min(tpos.x,fpos.x)*16-8,max(tpos.y,fpos.y)*16+8)
 		$CrosshairBR.global_position=Vector2(max(tpos.x,fpos.x)*16+8,max(tpos.y,fpos.y)*16+8)
+		$Arrow.global_position=tpos*16
 
 func _input(event):
 	if event.is_action_pressed("rotate_left"):

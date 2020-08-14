@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Test2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/belt/icon.png" type="Texture" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://gui/help/speechbubble.png" type="Texture" id=6]
 [ext_resource path="res://gui/help/chicken.png" type="Texture" id=7]
 [ext_resource path="res://gui/SpeechBubbleText.tres" type="DynamicFont" id=8]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 192, 192 )
+margin_left = 48.2495
+margin_right = 40.1762
+margin_top = 18.0881
+margin_bottom = 42.2055
 
 [node name="Editor" type="HBoxContainer"]
 anchor_right = 1.0
@@ -76,30 +84,26 @@ margin_bottom = 600.0
 size_flags_vertical = 3
 alignment = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="SideBar/VBoxContainer"]
-margin_top = 296.0
+[node name="PanelContainer" type="PanelContainer" parent="SideBar/VBoxContainer"]
+margin_top = 249.0
 margin_right = 420.0
-margin_bottom = 368.0
-texture = ExtResource( 6 )
-patch_margin_left = 54
-patch_margin_top = 18
-patch_margin_right = 18
-patch_margin_bottom = 54
+margin_bottom = 368.294
+custom_styles/panel = SubResource( 1 )
 
-[node name="Label" type="Label" parent="SideBar/VBoxContainer/NinePatchRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -55.5
-margin_top = -7.0
-margin_right = 55.5
-margin_bottom = 7.0
+[node name="Label" type="Label" parent="SideBar/VBoxContainer/PanelContainer"]
+margin_left = 48.2495
+margin_top = 18.0881
+margin_right = 379.824
+margin_bottom = 77.0881
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Hi! I'm a chicken!"
+text = "Transport the egg to the nest!"
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
