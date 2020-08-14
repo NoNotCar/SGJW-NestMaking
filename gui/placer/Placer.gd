@@ -19,6 +19,7 @@ func reset_crs():
 	$CrosshairTR.position=Vector2(8,-8)
 	$CrosshairBL.position=Vector2(-8,8)
 	$CrosshairBR.position=Vector2(8,8)
+	$Arrow.position=Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
 	tpos=registry.tile_pos(get_global_mouse_position())
@@ -71,17 +72,20 @@ func place():
 					smart_place(belt,fpos)
 	else:
 		if placing in simpledict:
+			var d=0.0
 			for p in lib.iterrow(fpos,inline_pos(spos)):
-				smart_place(simpledict[placing],p)
+				$Delay.interpolate_callback(self,d,"smart_place",simpledict[placing],p)
+				d+=0.05
+			$Delay.start()
 		else:
 			var ipos=inline_pos(spos)
 			match placing:
 				"bevel":
+					var d=0.0
 					for p in lib.iterrow(fpos,ipos):
-						if p==ipos:
-							smart_place(bevel,ipos)
-						else:
-							smart_place(axle,p)
+						$Delay.interpolate_callback(self,d,"smart_place",bevel if p==ipos else axle,p)
+						d+=0.05
+					$Delay.start()
 				"belt":
 					for p in lib.iterrow(fpos,ipos):
 						for b in registry.find("blocked",p):
@@ -91,6 +95,7 @@ func place():
 					new.rotation=0 if ipos.y==fpos.y else PI/2
 					new.length=(ipos-fpos).length()+1
 					get_parent().add_child(new)
+					$PlaceSound.play()
 					for p in lib.iterrow(fpos,ipos):
 						spawndict[p]=new
 func smart_place(thing:PackedScene,tpos:Vector2):
@@ -101,3 +106,4 @@ func smart_place(thing:PackedScene,tpos:Vector2):
 	new.rotation=r%4*TAU/4
 	get_parent().add_child(new)
 	spawndict[tpos]=new
+	$PlaceSound.play()

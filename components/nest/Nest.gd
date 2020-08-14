@@ -9,6 +9,7 @@ var eggs:=0 setget set_eggs
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	registry.register(self,"nest")
+	registry.register(self,"blocked")
 
 
 func set_eggs(new:int):
