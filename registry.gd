@@ -19,7 +19,9 @@ func reset():
 	_reg.clear()
 	lookup.clear()
 	time=0
-func register(what:Node2D,layer:String,pos:Vector2):
+func register(what:Node2D,layer:String,pos=null):
+	if pos == null:
+		pos=tile_pos(what.global_position)
 	if layer in _reg:
 		if pos in _reg[layer]:
 			_reg[layer][pos].append(what)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://components/belt/belt.png" type="Texture" id=1]
+[ext_resource path="res://components/belt/sides.png" type="Texture" id=2]
+[ext_resource path="res://components/belt/BeltSeg.gd" type="Script" id=3]
+
+[node name="BeltSeg" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Belt" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 8
+
+[node name="Sides" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 3

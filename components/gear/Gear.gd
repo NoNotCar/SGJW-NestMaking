@@ -19,8 +19,8 @@ func _process(delta):
 
 func set_spin(new:int):
 	if spin and new!=spin:
-		print("KILLA BEE GOT STUNG")
-		push_error("TODO: this...")
+		print(global_position)
+		push_error("TODO: this...: ")
 		return
 	elif new==spin:
 		return

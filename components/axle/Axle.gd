@@ -21,13 +21,14 @@ func _process(delta):
 
 func set_spin(new:int):
 	if spin and new!=spin:
+		print(global_position)
 		push_error("TODO: this as well...")
 		return
 	elif new==spin:
 		return
 	else:
 		spin=new
-		emit_signal("spin_changed")
+		emit_signal("spin_changed",self)
 		for a in ([Vector2.RIGHT,Vector2.LEFT] if hoz else [Vector2.UP,Vector2.DOWN]):
 			var tpos = registry.tile_pos(global_position)+a
 			for axle in registry.find("axle",tpos):
