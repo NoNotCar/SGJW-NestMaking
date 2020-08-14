@@ -16,7 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="SJGM-NestMaking"
+run/main_scene="res://Test.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+registry="*res://registry.gd"
+lib="*res://lib.gd"
 
 [importer_defaults]
 
