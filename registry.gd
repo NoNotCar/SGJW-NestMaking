@@ -48,6 +48,12 @@ func all_pos(layer:String)->Array:
 	if layer in _reg:
 		return _reg[layer].keys()
 	return []
+func all_things(layer:String)->Array:
+	var things=[]
+	if layer in _reg:
+		for t in _reg[layer].values():
+			things+=t
+	return things
 func unregister(what:Node2D):
 	assert(what in lookup)
 	for lp in lookup[what]:

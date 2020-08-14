@@ -8,6 +8,7 @@
 script = ExtResource( 3 )
 
 [node name="Axle" parent="." instance=ExtResource( 1 )]
+cull_front = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

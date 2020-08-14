@@ -6,9 +6,11 @@ export var tiles = preload("res://level/flooring.png")
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+func _input(event):
+	if event.is_action_pressed("run"):
+		for obj in registry.all_things("run"):
+			obj.start()
+		registry.time=0
 
 func set_size(new_size:Vector2):
 	size=new_size

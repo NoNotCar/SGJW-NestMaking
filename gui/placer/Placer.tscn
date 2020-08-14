@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://gui/placer/crosshair.png" type="Texture" id=1]
+[ext_resource path="res://gui/placer/Placer.gd" type="Script" id=2]
+[ext_resource path="res://gui/placer/arrow.png" type="Texture" id=3]
+
+[node name="Placer" type="Node2D"]
+z_index = 5
+script = ExtResource( 2 )
+
+[node name="CrosshairTL" type="Sprite" parent="."]
+position = Vector2( -8, -8 )
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 2
+
+[node name="CrosshairTR" type="Sprite" parent="."]
+position = Vector2( 8, -8 )
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="CrosshairBL" type="Sprite" parent="."]
+position = Vector2( -8, 8 )
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="CrosshairBR" type="Sprite" parent="."]
+position = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 2
+frame = 3
+
+[node name="Arrow" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 4

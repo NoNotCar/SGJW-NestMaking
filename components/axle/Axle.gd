@@ -4,20 +4,27 @@ signal spin_changed
 export var test_drive = false
 var spin:= 0 setget set_spin
 var hoz:bool
+var rot:bool
+export var cull_front = false
+export var cull_back = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	registry.register(self,"axle",registry.tile_pos(global_position))
+	registry.register(self,"axle")
+	registry.register(self,"blocked")
 	hoz=lib.point(self).x
-	if hoz:
-		global_rotation=PI/2
-	else:
-		global_rotation=0
+	rot=lib.point(self).y>0 or lib.point(self).x<0
+	if cull_front:
+		$Sprite.region_rect=Rect2(0,2,64,14)
+		$Sprite.offset=Vector2.DOWN
+	elif cull_back:
+		$Sprite.region_rect=Rect2(0,0,64,14)
+		$Sprite.offset=Vector2.UP
 
 func _process(delta):
 	if test_drive and not spin:
 		set_spin(1)
-	$Sprite.frame=int(fposmod(registry.time*spin,1)*4)
+	$Sprite.frame=int(fposmod(registry.time*spin+0.25*int(rot),1)*4)
 
 func set_spin(new:int):
 	if spin and new!=spin:
@@ -33,4 +40,4 @@ func set_spin(new:int):
 			var tpos = registry.tile_pos(global_position)+a
 			for axle in registry.find("axle",tpos):
 				if axle.hoz==hoz:
-					axle.spin=new
+					axle.spin=new if axle.rot==rot else -new

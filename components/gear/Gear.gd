@@ -9,6 +9,7 @@ var spin_dir = lib.around
 func _ready():
 	var tpos=registry.tile_pos(global_position)
 	registry.register(self,"gear",tpos)
+	registry.register(self,"blocked")
 	odd = int(tpos.x+tpos.y)%2
 
 
