@@ -13,3 +13,6 @@ func _ready():
 
 func start():
 	$Axle.spin=1
+	
+func stop():
+	$Axle.spin=0

@@ -27,7 +27,7 @@ func _process(delta):
 	$Sprite.frame=int(fposmod(registry.time*spin+0.25*int(rot),1)*4)
 
 func set_spin(new:int):
-	if spin and new!=spin:
+	if spin and new and new!=spin:
 		print(global_position)
 		push_error("TODO: this as well...")
 		return

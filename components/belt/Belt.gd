@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export var length = 3
+export var length = 1
 const axle := preload("res://components/axle/Axle.tscn")
 const beltseg:=preload("res://components/belt/BeltSeg.tscn")
 var axles=[]
@@ -21,7 +21,6 @@ func _ready():
 		bs.side_mode=bs.SIDE.SHORT if length==1 else bs.SIDE.END if n==length-1 else bs.SIDE.MIDDLE if n else bs.SIDE.START
 		add_child(bs)
 		segs.append(bs)
-		registry.register(self,"blocked",registry.tile_pos(global_position)+lib.point(self,Vector2.RIGHT)*n)
 
 func on_axle_speed_change(axle):
 	for a in axles:

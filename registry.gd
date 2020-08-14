@@ -7,6 +7,7 @@ extends Node
 var _reg:={}
 var lookup:={}
 var time=0
+var placing = "gear"
 const TILESIZE = Vector2(16,16)
 
 # Called when the node enters the scene tree for the first time.

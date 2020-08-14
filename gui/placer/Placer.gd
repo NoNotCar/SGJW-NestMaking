@@ -2,12 +2,16 @@ extends Node2D
 
 
 export var gear = preload("res://components/gear/Gear.tscn")
+export var axle = preload("res://components/axle/Axle.tscn")
+export var bevel = preload("res://components/bevel/Bevel.tscn")
+export var belt = preload("res://components/belt/Belt.tscn")
+
 var dragging:=false
 var fpos: Vector2
 var spos: Vector2
 var tpos: Vector2
-var place_mode = "gear"
 var r = 0
+var simpledict = {"gear":gear, "axle": axle}
 
 func reset_crs():
 	$CrosshairTL.position=Vector2(-8,-8)
@@ -49,14 +53,42 @@ func inline_pos(pos2):
 		return Vector2(pos2.x,fpos.y)
 	return Vector2(fpos.x,pos2.y)
 func place():
+	var placing=registry.placing
 	if spos==fpos:
-		smart_place(gear,fpos)
+		if placing in simpledict:
+			smart_place(simpledict[placing],fpos)
+		else:
+			match placing:
+				"bevel":
+					smart_place(bevel,fpos)
+				"belt":
+					smart_place(belt,fpos)
 	else:
-		for p in lib.iterrow(fpos,inline_pos(spos)):
-			smart_place(gear,p)
+		if placing in simpledict:
+			for p in lib.iterrow(fpos,inline_pos(spos)):
+				smart_place(simpledict[placing],p)
+		else:
+			var ipos=inline_pos(spos)
+			match placing:
+				"bevel":
+					for p in lib.iterrow(fpos,ipos):
+						if p==ipos:
+							smart_place(bevel,ipos)
+						else:
+							smart_place(axle,p)
+				"belt":
+					for p in lib.iterrow(fpos,ipos):
+						for b in registry.find("blocked",p):
+							return
+					var new = belt.instance()
+					new.position=Vector2(min(fpos.x,ipos.x),min(fpos.y,ipos.y))*16
+					new.rotation=0 if ipos.y==fpos.y else PI/2
+					new.length=(ipos-fpos).length()+1
+					get_parent().add_child(new)
 func smart_place(thing:PackedScene,tpos:Vector2):
 	for b in registry.find("blocked",tpos):
 		return
 	var new = thing.instance()
 	new.position=tpos*16
+	new.rotation=r%4*TAU/4
 	get_parent().add_child(new)

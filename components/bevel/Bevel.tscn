@@ -11,6 +11,7 @@ script = ExtResource( 3 )
 cull_front = true
 
 [node name="Sprite" type="Sprite" parent="."]
+z_index = 1
 texture = ExtResource( 2 )
 hframes = 2
 [connection signal="spin_changed" from="Axle" to="." method="_on_Axle_spin_changed"]

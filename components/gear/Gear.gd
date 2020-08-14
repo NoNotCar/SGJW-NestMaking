@@ -19,7 +19,7 @@ func _process(delta):
 	rotation=odd*TAU/16+spin*registry.time
 
 func set_spin(new:int):
-	if spin and new!=spin:
+	if spin and new and new!=spin:
 		print(global_position)
 		push_error("TODO: this...: ")
 		return
