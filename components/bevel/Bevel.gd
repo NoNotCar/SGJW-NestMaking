@@ -9,7 +9,7 @@ func _ready():
 	spin_dir=[-lib.point(self)]
 	registry.register(self,"gear",registry.tile_pos(global_position))
 func _process(delta):
-	$Sprite.frame=int(fposmod(registry.time*$Axle.spin,0.5)*4)
+	$Sprite.frame=int(fposmod(registry.time*$Axle.spin,0.5)*8)
 func set_spin(new):
 	$Axle.spin=-new
 func get_spin():
