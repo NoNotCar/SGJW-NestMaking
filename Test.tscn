@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/gear/Gear.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/axle/Axle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/bevel/Bevel.tscn" type="PackedScene" id=4]
 
 [node name="Test" type="Node2D"]
 
@@ -16,26 +17,35 @@ zoom = Vector2( 0.33, 0.33 )
 test_drive = true
 
 [node name="Gear2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 16, 0 )
+position = Vector2( -32, 48 )
 
 [node name="Gear4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 16, 16 )
+position = Vector2( 0, 32 )
 
 [node name="Gear3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 32, 0 )
+position = Vector2( -16, 48 )
 
 [node name="Gear5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 32, 16 )
+position = Vector2( 0, 48 )
 
 [node name="Gear6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 64, 16 )
+position = Vector2( -32, -48 )
+
+[node name="Gear7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 16 )
 
 [node name="Axle" parent="." instance=ExtResource( 3 )]
 position = Vector2( -32, 0 )
-test_drive = true
 
 [node name="Axle2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -32, -16 )
 
 [node name="Axle3" parent="." instance=ExtResource( 3 )]
 position = Vector2( -32, 16 )
+
+[node name="Bevel" parent="." instance=ExtResource( 4 )]
+position = Vector2( -32, -32 )
+
+[node name="Bevel2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -32, 32 )
+rotation = 3.14159
