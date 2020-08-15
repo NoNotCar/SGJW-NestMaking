@@ -2,6 +2,8 @@ extends Button
 
 
 export var spawn = "gear"
+export (String,MULTILINE) var info = "an object"
+signal show_info
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,3 +18,5 @@ func _ready():
 
 func _on_pressed():
 	registry.placing=spawn
+	if registry.level==1:
+		emit_signal("show_info",info)

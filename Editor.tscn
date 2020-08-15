@@ -57,6 +57,7 @@ columns = 4
 [node name="SelectBox" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_right = 96.0
 margin_bottom = 96.0
+info = "Gear - engages with adjacent gears"
 
 [node name="SelectBox2" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 100.0
@@ -64,35 +65,40 @@ margin_right = 196.0
 margin_bottom = 96.0
 icon = ExtResource( 4 )
 spawn = "axle"
+info = "Axle - transfers power in straight lines"
 
-[node name="SelectBox3" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
+[node name="SelectBox6" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 200.0
 margin_right = 296.0
 margin_bottom = 96.0
-icon = ExtResource( 3 )
-spawn = "bevel"
+icon = ExtResource( 11 )
+spawn = "crossover"
+info = "Crossover - two axles"
 
-[node name="SelectBox4" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
+[node name="SelectBox3" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 300.0
 margin_right = 396.0
 margin_bottom = 96.0
-icon = ExtResource( 2 )
-spawn = "belt"
+icon = ExtResource( 3 )
+spawn = "bevel"
+info = "Bevel gear - connects axles to gears"
 
-[node name="SelectBox5" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
+[node name="SelectBox4" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_top = 100.0
 margin_right = 96.0
 margin_bottom = 196.0
-icon = ExtResource( 1 )
-spawn = "differential"
+icon = ExtResource( 2 )
+spawn = "belt"
+info = "Conveyor belt - good for moving eggs :P"
 
-[node name="SelectBox6" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
+[node name="SelectBox5" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 100.0
 margin_top = 100.0
 margin_right = 196.0
 margin_bottom = 196.0
-icon = ExtResource( 11 )
-spawn = "crossover"
+icon = ExtResource( 1 )
+spawn = "differential"
+info = "Differential - The front axle spins at the average rate of the two side axles"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SideBar"]
 margin_top = 200.0

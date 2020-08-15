@@ -13,6 +13,8 @@ func _ready():
 	$SideBar/VBoxContainer/CenterContainer/TextureRect.texture=level.character
 	level.connect("complete",self,"on_done")
 	BlastDoors.connect("opened",self,"on_open")
+	for selector in $SideBar/CenterContainer/GridContainer.get_children():
+		selector.connect("show_info",$SideBar/VBoxContainer/Chatbox,"add_text")
 func on_open():
 	$SideBar/VBoxContainer/Chatbox.add_text(level.goal_text)
 	
