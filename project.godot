@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 registry="*res://registry.gd"
 lib="*res://lib.gd"
+BlastDoors="*res://gui/blastdoor/BlastDoors.tscn"
 
 [debug]
 
