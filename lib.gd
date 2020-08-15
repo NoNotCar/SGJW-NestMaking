@@ -17,6 +17,8 @@ func iterrow(pos1:Vector2, pos2:Vector2):
 	for n in range(int(dir.length())+1):
 		res.append(pos1+idir*n)
 	return res
+func aniframe(period:float,frames:int,spin:float):
+	return int(fposmod(registry.time*spin,period)*frames/period)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

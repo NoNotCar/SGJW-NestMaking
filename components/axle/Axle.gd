@@ -26,6 +26,15 @@ func _process(delta):
 		set_spin(1)
 	$Sprite.frame=int(fposmod(registry.time*spin+0.25*int(rot),1)*4)
 
+func get_transference()->Array:
+	var l=[Vector2.RIGHT,Vector2.LEFT] if hoz else [Vector2.UP,Vector2.DOWN]
+	if rot:
+		l.invert()
+	if cull_front:
+		l.pop_front()
+	elif cull_back:
+		l.pop_back()
+	return l
 func set_spin(new:int):
 	if spin and new and new!=spin:
 		registry.jam(self)
@@ -35,8 +44,8 @@ func set_spin(new:int):
 	else:
 		spin=new
 		emit_signal("spin_changed",self)
-		for a in ([Vector2.RIGHT,Vector2.LEFT] if hoz else [Vector2.UP,Vector2.DOWN]):
+		for a in get_transference():
 			var tpos = registry.tile_pos(global_position)+a
 			for axle in registry.find("axle",tpos):
-				if axle.hoz==hoz:
+				if -a in axle.get_transference():
 					axle.spin=new if axle.rot==rot else -new

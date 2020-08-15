@@ -16,5 +16,5 @@ func set_eggs(new:int):
 # warning-ignore:narrowing_conversion
 	eggs=clamp(new,0,3)
 	$Sprite.frame=eggs
-	if eggs:
-		get_tree().change_scene("res://gui/Congratulations.tscn")
+	if eggs and not get_tree().get_nodes_in_group("Eggs"):
+		get_parent().emit_signal("complete")

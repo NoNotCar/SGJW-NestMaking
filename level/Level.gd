@@ -1,9 +1,16 @@
 extends Node2D
 tool
+signal complete
 
 export var size = Vector2(5,5) setget set_size
 export var tiles = preload("res://level/flooring.png")
+export var character = preload("res://gui/help/chicken.png")
+export var goal_text = "Get the egg to the nest!"
 var running=false
+
+func _init():
+	if not Engine.editor_hint:
+		registry.reset()
 
 # Called when the node enters the scene tree for the first time.
 func _input(event):
@@ -23,6 +30,8 @@ func _input(event):
 func set_size(new_size:Vector2):
 	size=new_size
 	update()
+	var z=0.06*new_size.y
+	$Camera2D.zoom=Vector2(z,z)
 
 func _draw():
 	for x in range(-size.x,size.x+1):

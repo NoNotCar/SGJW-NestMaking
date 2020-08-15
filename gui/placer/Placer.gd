@@ -5,13 +5,14 @@ export var gear = preload("res://components/gear/Gear.tscn")
 export var axle = preload("res://components/axle/Axle.tscn")
 export var bevel = preload("res://components/bevel/Bevel.tscn")
 export var belt = preload("res://components/belt/Belt.tscn")
+export var diff = preload("res://components/differential/Differential.tscn")
 
 var dragging:=false
 var fpos: Vector2
 var spos: Vector2
 var tpos: Vector2
 var r = 0
-var simpledict = {"gear":gear, "axle": axle}
+var simpledict = {"gear":gear, "axle": axle,"differential":diff}
 var spawndict = {}
 
 func reset_crs():
@@ -34,6 +35,8 @@ func _process(delta):
 		$Arrow.global_position=tpos*16
 
 func _input(event):
+	if get_parent().running:
+		return
 	if event.is_action_pressed("rotate_left"):
 		r-=1
 		r%=4
@@ -92,18 +95,20 @@ func place():
 							return
 					var new = belt.instance()
 					new.position=Vector2(min(fpos.x,ipos.x),min(fpos.y,ipos.y))*16
-					new.rotation=0 if ipos.y==fpos.y else PI/2
+					new.rotation=0.0 if ipos.y==fpos.y else PI/2
 					new.length=(ipos-fpos).length()+1
 					get_parent().add_child(new)
 					$PlaceSound.play()
 					for p in lib.iterrow(fpos,ipos):
 						spawndict[p]=new
-func smart_place(thing:PackedScene,tpos:Vector2):
-	for b in registry.find("blocked",tpos):
+func smart_place(thing:PackedScene,pos:Vector2):
+	for b in registry.find("blocked",pos):
+		return
+	if abs(tpos.x)>get_parent().size.x or abs(pos.y)>get_parent().size.y:
 		return
 	var new = thing.instance()
-	new.position=tpos*16
+	new.position=pos*16
 	new.rotation=r%4*TAU/4
 	get_parent().add_child(new)
-	spawndict[tpos]=new
+	spawndict[pos]=new
 	$PlaceSound.play()

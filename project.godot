@@ -24,6 +24,12 @@ config/icon="res://icon.png"
 registry="*res://registry.gd"
 lib="*res://lib.gd"
 
+[debug]
+
+gdscript/warnings/unused_argument=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+
 [importer_defaults]
 
 texture={
