@@ -15,8 +15,11 @@ func _ready():
 	level.connect("complete",self,"on_done")
 	
 func on_done():
-	$SideBar/VBoxContainer/Chatbox.add_text("Well done! Press any key to proceed to the next stage!")
-	done=true
+	if registry.level==registry.MAX_LEVEL:
+		$SideBar/VBoxContainer/Chatbox.add_text("Well done! You've completed all the stages!")
+	else:
+		$SideBar/VBoxContainer/Chatbox.add_text("Well done! Press any key to proceed to the next stage!")
+		done=true
 	
 func _input(event):
 	if done and event is InputEventKey:

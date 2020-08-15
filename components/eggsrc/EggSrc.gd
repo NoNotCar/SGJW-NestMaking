@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const egg = preload("res://components/eggsrc/Egg.tscn")
+export var egg = preload("res://components/eggsrc/Egg.tscn")
 var spawned
 
 # Called when the node enters the scene tree for the first time.
