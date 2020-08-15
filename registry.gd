@@ -10,7 +10,7 @@ var time=0
 var placing = "gear"
 var errored:=false
 var level = 1
-const MAX_LEVEL = 3
+const MAX_LEVEL = 4
 const jam_error = preload("res://gui/alerts/JamError.tscn")
 const TILESIZE = Vector2(16,16)
 

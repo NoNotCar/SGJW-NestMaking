@@ -24,7 +24,7 @@ func _ready():
 func _process(delta):
 	if test_drive and not spin:
 		set_spin(1)
-	$Sprite.frame=int(fposmod(registry.time*spin+0.25*int(rot),1)*4)
+	$Sprite.frame=int(fposmod(registry.time*spin+0.249*int(rot),1)*4)
 
 func get_transference()->Array:
 	var l=[Vector2.RIGHT,Vector2.LEFT] if hoz else [Vector2.UP,Vector2.DOWN]

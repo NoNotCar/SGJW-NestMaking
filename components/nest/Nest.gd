@@ -20,5 +20,8 @@ func set_eggs(new:int):
 # warning-ignore:narrowing_conversion
 	eggs=clamp(new,0,$Sprite.hframes-1)
 	$Sprite.frame=eggs
-	if eggs and not get_tree().get_nodes_in_group("Eggs"):
+	if not get_tree().get_nodes_in_group("Eggs"):
+		for nest in get_tree().get_nodes_in_group("Nests"):
+			if not nest.eggs:
+				return
 		get_parent().emit_signal("complete")

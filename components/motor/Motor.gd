@@ -16,3 +16,13 @@ func start():
 	
 func stop():
 	$Axle.spin=0
+	
+func reverse():
+	var rspin=-$Axle.spin
+	$Axle.spin=0
+	$Axle.spin=rspin
+	$Sprite.frame=3-$Sprite.frame
+
+
+func _on_area_entered(area):
+	reverse()

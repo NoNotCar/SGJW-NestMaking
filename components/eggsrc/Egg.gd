@@ -19,13 +19,19 @@ func check():
 			$Tween.interpolate_property(self,"position",position,position+dir.normalized()*16,1/float(abs(belt.spin)),Tween.TRANS_LINEAR)
 			$Tween.start()
 		return
-	for nest in registry.find("nest",registry.tile_pos(global_position)):
-		remove_from_group("Eggs")
-		nest.eggs+=1
-		queue_free()
-		return
+	if $Sprite.frame==0:
+		for nest in registry.find("nest",registry.tile_pos(global_position)):
+			remove_from_group("Eggs")
+			nest.eggs+=1
+			queue_free()
+			return
 	$Sprite.frame=1
 
 
 func _on_tween_all_completed():
 	check()
+
+
+func _on_area_entered(area):
+	if area.get_parent() in get_tree().get_nodes_in_group("Eggs"):
+		$Sprite.frame=1

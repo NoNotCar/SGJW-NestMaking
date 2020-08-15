@@ -6,13 +6,14 @@ export var axle = preload("res://components/axle/Axle.tscn")
 export var bevel = preload("res://components/bevel/Bevel.tscn")
 export var belt = preload("res://components/belt/Belt.tscn")
 export var diff = preload("res://components/differential/Differential.tscn")
+export var cross = preload("res://components/crossaxle/Crossover.tscn")
 
 var dragging:=false
 var fpos: Vector2
 var spos: Vector2
 var tpos: Vector2
 var r = 0
-var simpledict = {"gear":gear, "axle": axle,"differential":diff}
+var simpledict = {"gear":gear, "axle": axle,"differential":diff,"crossover":cross}
 var spawndict = {}
 
 func reset_crs():
