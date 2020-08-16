@@ -1,7 +1,7 @@
 extends Node2D
 
 signal spin_changed
-var spin:= 0 setget set_spin
+var spin:= 0.0 setget set_spin
 var hoz:bool
 var rot:bool
 export var cull_front = false
@@ -32,7 +32,7 @@ func get_transference()->Array:
 	elif cull_back:
 		l.pop_back()
 	return l
-func set_spin(new:int):
+func set_spin(new:float):
 	if spin and new and new!=spin:
 		registry.jam(self)
 		return

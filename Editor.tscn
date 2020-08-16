@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://components/differential/icon.png" type="Texture" id=1]
 [ext_resource path="res://components/belt/icon.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://gui/Chatbox.gd" type="Script" id=10]
 [ext_resource path="res://components/crossaxle/icon.png" type="Texture" id=11]
 [ext_resource path="res://gui/startstop/StartStop.tscn" type="PackedScene" id=12]
+[ext_resource path="res://components/bevel/smallicon.png" type="Texture" id=13]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )
@@ -84,27 +85,36 @@ icon = ExtResource( 3 )
 spawn = "bevel"
 info = "Bevel gear - connects axles to gears"
 
-[node name="SelectBox4" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
+[node name="SelectBox7" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_top = 100.0
 margin_right = 96.0
+margin_bottom = 196.0
+icon = ExtResource( 13 )
+spawn = "smallbevel"
+info = "Small bevel gear - good for changing speed"
+
+[node name="SelectBox4" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 196.0
 margin_bottom = 196.0
 icon = ExtResource( 2 )
 spawn = "belt"
 info = "Conveyor belt - good for moving eggs :P"
 
 [node name="SelectBox5" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
-margin_left = 100.0
+margin_left = 200.0
 margin_top = 100.0
-margin_right = 196.0
+margin_right = 296.0
 margin_bottom = 196.0
 icon = ExtResource( 1 )
 spawn = "differential"
 info = "Differential - The front axle spins at the average rate of the two side axles"
 
 [node name="StartStop" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 12 )]
-margin_left = 200.0
+margin_left = 300.0
 margin_top = 100.0
-margin_right = 296.0
+margin_right = 396.0
 margin_bottom = 196.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SideBar"]

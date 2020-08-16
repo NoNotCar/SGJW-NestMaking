@@ -4,6 +4,7 @@ extends Node2D
 export var gear = preload("res://components/gear/Gear.tscn")
 export var axle = preload("res://components/axle/Axle.tscn")
 export var bevel = preload("res://components/bevel/Bevel.tscn")
+export var sbevel = preload("res://components/bevel/SmallBevel.tscn")
 export var belt = preload("res://components/belt/Belt.tscn")
 export var diff = preload("res://components/differential/Differential.tscn")
 export var cross = preload("res://components/crossaxle/Crossover.tscn")
@@ -14,6 +15,7 @@ var spos: Vector2
 var tpos: Vector2
 var r = 0
 var simpledict = {"gear":gear, "axle": axle,"differential":diff,"crossover":cross}
+var bdict = {"bevel":bevel, "smallbevel":sbevel}
 var spawndict = {}
 
 func reset_crs():
@@ -72,6 +74,8 @@ func place():
 			match placing:
 				"bevel":
 					smart_place(bevel,fpos)
+				"smallbevel":
+					smart_place(sbevel,fpos)
 				"belt":
 					smart_place(belt,fpos,1)
 	else:
@@ -83,25 +87,24 @@ func place():
 			$Delay.start()
 		else:
 			var ipos=inline_pos(spos)
-			match placing:
-				"bevel":
-					var d=0.0
-					for p in lib.iterrow(fpos,ipos):
-						$Delay.interpolate_callback(self,d,"smart_place",bevel if p==ipos else axle,p)
-						d+=0.05
-					$Delay.start()
-				"belt":
-					for p in lib.iterrow(fpos,ipos):
-						for b in registry.find("blocked",p):
-							return
-					var new = belt.instance()
-					new.position=Vector2(min(fpos.x,ipos.x),min(fpos.y,ipos.y))*16
-					new.rotation=0.0 if ipos.y==fpos.y else PI/2
-					new.length=(ipos-fpos).length()+1
-					get_parent().add_child(new)
-					$PlaceSound.play()
-					for p in lib.iterrow(fpos,ipos):
-						spawndict[p]=new
+			if placing in bdict:
+				var d=0.0
+				for p in lib.iterrow(fpos,ipos):
+					$Delay.interpolate_callback(self,d,"smart_place",bdict[placing] if p==ipos else axle,p)
+					d+=0.05
+				$Delay.start()
+			else:
+				for p in lib.iterrow(fpos,ipos):
+					for b in registry.find("blocked",p):
+						return
+				var new = belt.instance()
+				new.position=Vector2(min(fpos.x,ipos.x),min(fpos.y,ipos.y))*16
+				new.rotation=0.0 if ipos.y==fpos.y else PI/2
+				new.length=(ipos-fpos).length()+1
+				get_parent().add_child(new)
+				$PlaceSound.play()
+				for p in lib.iterrow(fpos,ipos):
+					spawndict[p]=new
 func smart_place(thing:PackedScene,pos:Vector2,ex_r=0):
 	for b in registry.find("blocked",pos):
 		return

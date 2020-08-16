@@ -6,12 +6,12 @@
 [ext_resource path="res://components/nest/Nest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/eggsrc/EggSrc.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/nest/PenguNest.tscn" type="PackedScene" id=6]
-[ext_resource path="res://level/Level.tscn" type="PackedScene" id=7]
-[ext_resource path="res://components/eggsrc/PenguEgg.tscn" type="PackedScene" id=8]
-[ext_resource path="res://components/motor/Motor.tscn" type="PackedScene" id=9]
+[ext_resource path="res://components/motor/Motor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://level/Level.tscn" type="PackedScene" id=8]
+[ext_resource path="res://components/eggsrc/PenguEgg.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/motor/SmartMotor.tscn" type="PackedScene" id=10]
 
-[node name="Level6" instance=ExtResource( 7 )]
+[node name="Level6" instance=ExtResource( 8 )]
 size = Vector2( 7, 7 )
 tiles = ExtResource( 3 )
 character = ExtResource( 1 )
@@ -30,7 +30,7 @@ position = Vector2( -112, -64 )
 [node name="EggSrc3" parent="." index="4" instance=ExtResource( 5 )]
 position = Vector2( 0, -112 )
 rotation = 1.5708
-egg = ExtResource( 8 )
+egg = ExtResource( 9 )
 cover = 1
 
 [node name="Nest" parent="." index="5" instance=ExtResource( 4 )]
@@ -41,6 +41,6 @@ position = Vector2( 0, 112 )
 
 [node name="SmartMotor" parent="." index="7" instance=ExtResource( 10 )]
 
-[node name="Motor" parent="." index="8" instance=ExtResource( 9 )]
+[node name="Motor" parent="." index="8" instance=ExtResource( 7 )]
 position = Vector2( 112, 64 )
 rotation = -1.5708

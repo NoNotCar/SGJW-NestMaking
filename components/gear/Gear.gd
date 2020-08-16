@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var spin:= 0 setget set_spin
+var spin:= 0.0 setget set_spin
 var odd:=0
 var spin_dir = lib.around
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 	rotation=odd*TAU/16+spin*registry.time
 
-func set_spin(new:int):
+func set_spin(new:float):
 	if spin and new and new!=spin:
 		registry.jam(self)
 		return

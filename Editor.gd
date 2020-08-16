@@ -7,9 +7,10 @@ extends HBoxContainer
 var done:=false
 var level
 const selclass = preload("res://gui/selectbox/SelectBox.gd")
+const lnames = ["Start","Confluence","Oscillate","Split","Penguin","Final"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	level = load("res://level/Level%s.tscn" % registry.level).instance()
+	level = load("res://level/%s.tscn" % lnames[registry.level-1]).instance()
 	$ViewportContainer/Viewport.add_child(level)
 	$SideBar/VBoxContainer/CenterContainer/TextureRect.texture=level.character
 	level.connect("complete",self,"on_done")

@@ -7,6 +7,7 @@ extends Node2D
 export var fixed = false
 var fpos:Vector2
 export var target_nest = "nest"
+const MAX_SPEED = 3.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if fixed:
@@ -23,6 +24,8 @@ func check():
 		return
 	for belt in registry.find("belt",registry.tile_pos(global_position)):
 		var dir = lib.point(belt,Vector2.RIGHT)*belt.spin
+		if abs(belt.spin)>MAX_SPEED:
+			$Sprite.frame=1
 		if dir:
 			$Tween.interpolate_property(self,"position",position,position+dir.normalized()*16,1/float(abs(belt.spin)),Tween.TRANS_LINEAR)
 			$Tween.start()

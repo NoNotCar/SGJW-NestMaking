@@ -9,7 +9,7 @@ var ice=0.0
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
-	ice+=delta*0.1
+	ice+=delta*0.15
 	ice=min(ice,1)
 	$Sprite.modulate=Color(1-ice*0.3,1-ice*0.3,1)
 	if ice==1:
