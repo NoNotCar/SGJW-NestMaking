@@ -36,6 +36,9 @@ func _process(delta):
 		$CrosshairBL.global_position=Vector2(min(tpos.x,fpos.x)*16-8,max(tpos.y,fpos.y)*16+8)
 		$CrosshairBR.global_position=Vector2(max(tpos.x,fpos.x)*16+8,max(tpos.y,fpos.y)*16+8)
 		$Arrow.global_position=tpos*16
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+		if tpos in spawndict and spawndict[tpos]:
+			spawndict[tpos].queue_free()
 
 func _input(event):
 	if get_parent().running:
@@ -57,10 +60,6 @@ func _input(event):
 					place()
 					reset_crs()
 					dragging=false
-		elif event.button_index==BUTTON_RIGHT:
-			if event.pressed:
-				if tpos in spawndict and spawndict[tpos]:
-					spawndict[tpos].queue_free()
 func inline_pos(pos2):
 	if abs(pos2.x-fpos.x)>abs(pos2.y-fpos.y):
 		return Vector2(pos2.x,fpos.y)
@@ -79,6 +78,8 @@ func place():
 				"belt":
 					smart_place(belt,fpos,1)
 	else:
+		var ipos=inline_pos(spos)
+		r=int(lib.rpoint(ipos-fpos)/(PI/2))%4
 		if placing in simpledict:
 			var d=0.0
 			for p in lib.iterrow(fpos,inline_pos(spos)):
@@ -86,7 +87,6 @@ func place():
 				d+=0.05
 			$Delay.start()
 		else:
-			var ipos=inline_pos(spos)
 			if placing in bdict:
 				var d=0.0
 				for p in lib.iterrow(fpos,ipos):

@@ -9,6 +9,8 @@ func _ready():
 
 func point(thing:Node2D,forwards:=Vector2.UP)->Vector2:
 	return forwards.rotated(thing.global_rotation).snapped(Vector2.ONE)
+func rpoint(dir:Vector2,forwards:=Vector2.UP)->float:
+	return forwards.angle_to(dir)
 func iterrow(pos1:Vector2, pos2:Vector2):
 	var dir = pos2-pos1
 	var idir=dir.normalized()
