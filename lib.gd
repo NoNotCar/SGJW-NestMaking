@@ -18,6 +18,20 @@ func iterrow(pos1:Vector2, pos2:Vector2):
 	return res
 func aniframe(period:float,frames:int,spin:float):
 	return int(fposmod(registry.time*spin,period)*frames/period)
+func try_load(sfile,default):
+	var d=Directory.new()
+	var result=default
+	if d.file_exists(sfile):
+		var f=File.new()
+		f.open(sfile,File.READ)
+		result=f.get_var()
+		f.close()
+	return result
+func save(sfile,value):
+	var f=File.new()
+	f.open(sfile,File.WRITE)
+	f.store_var(value)
+	f.close()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

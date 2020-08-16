@@ -10,14 +10,15 @@ var time=0
 var placing = "gear"
 var errored:=false
 var level = 1
+var progress = 0
+var sfile = "user://progress.sav"
 const MAX_LEVEL = 6
 const jam_error = preload("res://gui/alerts/JamError.tscn")
 const TILESIZE = Vector2(16,16)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	progress = lib.try_load(sfile,0)
 
 
 func reset():
@@ -74,3 +75,6 @@ func _process(delta):
 		time+=delta
 func tile_pos(pos:Vector2)->Vector2:
 	return (pos/TILESIZE).snapped(Vector2.ONE)
+func save_progress():
+	progress=max(level,progress)
+	lib.save(sfile,progress)

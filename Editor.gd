@@ -23,6 +23,7 @@ func on_open():
 	$Music.play()
 	
 func on_done():
+	registry.save_progress()
 	if registry.level==registry.MAX_LEVEL:
 		$SideBar/VBoxContainer/Chatbox.add_text("Well done! You've completed all the stages!")
 	else:

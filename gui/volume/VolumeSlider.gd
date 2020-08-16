@@ -8,12 +8,7 @@ const sfile = "user://volume.sav"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var d=Directory.new()
-	if d.file_exists(sfile):
-		var f=File.new()
-		f.open(sfile,File.READ)
-		$CenterContainer/HSlider.value=f.get_var()
-		f.close()
+	$CenterContainer/HSlider.value=lib.try_load(sfile,100)
 	_on_HSlider_value_changed($CenterContainer/HSlider.value)
 
 
@@ -30,8 +25,5 @@ func _on_HSlider_value_changed(value):
 	else:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 func _exit_tree():
-	var f=File.new()
-	f.open(sfile,File.WRITE)
-	f.store_var($CenterContainer/HSlider.value)
-	f.close()
+	lib.save(sfile,$CenterContainer/HSlider.value)
 	

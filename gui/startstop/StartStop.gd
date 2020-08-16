@@ -8,7 +8,6 @@ var running=false
 # Called when the node enters the scene tree for the first time.
 func _input(event):
 	if event.is_action_pressed("run"):
-		print("you say run")
 		running=not running
 		if running:
 			icon=stop
