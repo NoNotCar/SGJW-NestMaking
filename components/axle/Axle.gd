@@ -1,7 +1,6 @@
 extends Node2D
 
 signal spin_changed
-export var test_drive = false
 var spin:= 0 setget set_spin
 var hoz:bool
 var rot:bool
@@ -22,8 +21,6 @@ func _ready():
 		$Sprite.offset=Vector2.UP
 
 func _process(delta):
-	if test_drive and not spin:
-		set_spin(1)
 	$Sprite.frame=int(fposmod(registry.time*spin+0.249*int(rot),1)*4)
 
 func get_transference()->Array:

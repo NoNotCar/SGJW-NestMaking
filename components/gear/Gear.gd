@@ -1,7 +1,6 @@
 extends Node2D
 
 
-export var test_drive = false
 var spin:= 0 setget set_spin
 var odd:=0
 var spin_dir = lib.around
@@ -14,8 +13,6 @@ func _ready():
 
 
 func _process(delta):
-	if test_drive and not spin:
-		set_spin(1)
 	rotation=odd*TAU/16+spin*registry.time
 
 func set_spin(new:int):
