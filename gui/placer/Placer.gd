@@ -39,6 +39,7 @@ func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		if tpos in spawndict and spawndict[tpos]:
 			spawndict[tpos].queue_free()
+			spawndict.erase(tpos)
 
 func _input(event):
 	if get_parent().running:
@@ -97,6 +98,8 @@ func place():
 				for p in lib.iterrow(fpos,ipos):
 					for b in registry.find("blocked",p):
 						return
+					if abs(p.x)>get_parent().size.x or abs(p.y)>get_parent().size.y:
+						return
 				var new = belt.instance()
 				new.position=Vector2(min(fpos.x,ipos.x),min(fpos.y,ipos.y))*16
 				new.rotation=0.0 if ipos.y==fpos.y else PI/2
@@ -108,7 +111,7 @@ func place():
 func smart_place(thing:PackedScene,pos:Vector2,ex_r=0):
 	for b in registry.find("blocked",pos):
 		return
-	if abs(tpos.x)>get_parent().size.x or abs(pos.y)>get_parent().size.y:
+	if abs(pos.x)>get_parent().size.x or abs(pos.y)>get_parent().size.y:
 		return
 	var new = thing.instance()
 	new.position=pos*16
