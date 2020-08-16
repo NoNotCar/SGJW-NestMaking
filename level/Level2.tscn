@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/motor/Motor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/eggsrc/EggSrc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/nest/Nest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/help/pigeon.png" type="Texture" id=5]
+[ext_resource path="res://music/moving.ogg" type="AudioStream" id=6]
 
 [node name="Level2" instance=ExtResource( 1 )]
 character = ExtResource( 5 )
 goal_text = "Get all the eggs to the nest!"
+music = ExtResource( 6 )
 
 [node name="Motor" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 80, 80 )

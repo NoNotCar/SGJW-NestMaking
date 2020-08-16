@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gui/button/button.tres" type="StyleBox" id=1]
 [ext_resource path="res://gui/MediumText.tres" type="DynamicFont" id=2]
@@ -6,10 +6,14 @@
 [ext_resource path="res://gui/title/StartButton.gd" type="Script" id=4]
 [ext_resource path="res://gui/button/buttondark.tres" type="StyleBox" id=5]
 [ext_resource path="res://gui/button/buttonlight.tres" type="StyleBox" id=6]
+[ext_resource path="res://music/bonusgame.ogg" type="AudioStream" id=7]
+[ext_resource path="res://gui/title/Title.gd" type="Script" id=8]
+[ext_resource path="res://gui/volume/VolumeSlider.tscn" type="PackedScene" id=9]
 
 [node name="Title" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -23,9 +27,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 312.0
-margin_top = 194.0
+margin_top = 154.0
 margin_right = 712.0
-margin_bottom = 405.0
+margin_bottom = 445.0
 custom_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
@@ -46,4 +50,12 @@ custom_styles/normal = ExtResource( 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "START"
 script = ExtResource( 4 )
+
+[node name="VolumeSlider" parent="CenterContainer/VBoxContainer" instance=ExtResource( 9 )]
+margin_top = 227.0
+margin_right = 400.0
+margin_bottom = 291.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="CenterContainer/VBoxContainer/StartButton" method="_on_pressed"]

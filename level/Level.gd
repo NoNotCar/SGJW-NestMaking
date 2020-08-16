@@ -6,6 +6,7 @@ export var size = Vector2(5,5) setget set_size
 export var tiles = preload("res://level/flooring.png")
 export var character = preload("res://gui/help/chicken.png")
 export var goal_text = "Get the egg to the nest!"
+export var music = preload("res://music/mountain.ogg")
 var running=false
 
 func _init():

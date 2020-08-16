@@ -5,12 +5,14 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var eggs:=0 setget set_eggs
-
+var max_eggs
+export var nest_type="nest"
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	registry.register(self,"nest")
+	registry.register(self,nest_type)
 	registry.register(self,"blocked")
 	registry.register(self,"run")
+	max_eggs=$Sprite.hframes-1
 
 func start():
 	set_eggs(0)

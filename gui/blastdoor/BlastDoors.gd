@@ -1,13 +1,13 @@
 extends CanvasLayer
 
 
-var open:=false
+var open:=true
 signal opened
 var override_scene=""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.start()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,6 +17,7 @@ func close(next_scene=""):
 	override_scene=next_scene
 	if open:
 		$AnimationPlayer.play_backwards("Open")
+		$Open.play()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	open=not open
@@ -32,3 +33,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_Timer_timeout():
 	$AnimationPlayer.play("Open")
+	$Open.play()

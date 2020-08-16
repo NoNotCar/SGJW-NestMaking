@@ -154,4 +154,6 @@ margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 7 )
 expand = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
 [connection signal="timeout" from="SideBar/VBoxContainer/Chatbox/Timer" to="SideBar/VBoxContainer/Chatbox" method="_on_Timer_timeout"]

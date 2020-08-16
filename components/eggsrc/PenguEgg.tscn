@@ -6,6 +6,7 @@
 
 [node name="PenguEgg" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
+target_nest = "penguin"
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )

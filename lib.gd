@@ -3,7 +3,6 @@ extends Node
 
 const around = [Vector2.UP,Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT]
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

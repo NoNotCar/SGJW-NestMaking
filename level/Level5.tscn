@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://components/nest/Nest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/belt/Belt.tscn" type="PackedScene" id=2]
@@ -11,10 +11,12 @@
 [ext_resource path="res://components/motor/Motor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/gear/Gear.tscn" type="PackedScene" id=10]
 [ext_resource path="res://components/bevel/Bevel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://music/pink.ogg" type="AudioStream" id=12]
 
 [node name="Level5" instance=ExtResource( 5 )]
 character = ExtResource( 8 )
 goal_text = "SQUALK! If I find the idiot who glued down those components in the corner, I'll claw their eyes out!"
+music = ExtResource( 12 )
 
 [node name="EggSrc" parent="." index="2" instance=ExtResource( 6 )]
 position = Vector2( -80, -48 )

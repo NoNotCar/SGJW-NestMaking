@@ -6,6 +6,7 @@ extends Node2D
 # var b = "text"
 export var fixed = false
 var fpos:Vector2
+export var target_nest = "nest"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if fixed:
@@ -27,11 +28,12 @@ func check():
 			$Tween.start()
 		return
 	if $Sprite.frame==0:
-		for nest in registry.find("nest",registry.tile_pos(global_position)):
-			remove_from_group("Eggs")
-			nest.eggs+=1
-			queue_free()
-			return
+		for nest in registry.find(target_nest,registry.tile_pos(global_position)):
+			if nest.eggs!=nest.max_eggs:
+				remove_from_group("Eggs")
+				nest.eggs+=1
+				queue_free()
+				return
 	$Sprite.frame=1
 
 

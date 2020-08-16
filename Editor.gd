@@ -19,6 +19,8 @@ func _ready():
 			selector.connect("show_info",$SideBar/VBoxContainer/Chatbox,"add_text")
 func on_open():
 	$SideBar/VBoxContainer/Chatbox.add_text(level.goal_text)
+	$Music.stream=level.music
+	$Music.play()
 	
 func on_done():
 	if registry.level==registry.MAX_LEVEL:
@@ -32,6 +34,7 @@ func _input(event):
 		registry.level+=1
 		BlastDoors.close()
 		done=false
+		$Music.stop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
