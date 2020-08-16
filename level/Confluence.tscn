@@ -9,7 +9,7 @@
 
 [node name="Level2" instance=ExtResource( 6 )]
 character = ExtResource( 1 )
-goal_text = "Get all the eggs to the nest!"
+goal_text = "Get all the eggs to the nest, but don't let any break!"
 music = ExtResource( 2 )
 
 [node name="Motor" parent="." index="2" instance=ExtResource( 5 )]

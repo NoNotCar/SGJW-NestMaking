@@ -6,6 +6,7 @@
 [ext_resource path="res://components/nest/Nest.tscn" type="PackedScene" id=4]
 
 [node name="Level1" instance=ExtResource( 1 )]
+goal_text = "Welcome to Eggs Inc! To start, simply transport the egg to the nest using the motor at the bottom."
 
 [node name="Nest" parent="." index="2" instance=ExtResource( 4 )]
 position = Vector2( 64, 64 )

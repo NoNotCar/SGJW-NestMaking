@@ -12,7 +12,7 @@
 [node name="Level3" instance=ExtResource( 7 )]
 tiles = ExtResource( 3 )
 character = ExtResource( 1 )
-goal_text = "Brrr, it's cold! Get the egg to my buddy before it freezes!"
+goal_text = "Brrr, it's cold! Get the egg to my buddy before it freezes, but don't break it!"
 music = ExtResource( 2 )
 
 [node name="EggSrc" parent="." index="2" instance=ExtResource( 4 )]

@@ -59,7 +59,7 @@ columns = 4
 [node name="SelectBox" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_right = 96.0
 margin_bottom = 96.0
-info = "Gear - engages with adjacent gears"
+info = "Gear - transfers rotation to adjacent gears"
 
 [node name="SelectBox2" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 100.0
@@ -67,7 +67,7 @@ margin_right = 196.0
 margin_bottom = 96.0
 icon = ExtResource( 4 )
 spawn = "axle"
-info = "Axle - transfers power in straight lines"
+info = "Axle - transfers rotation in straight lines"
 
 [node name="SelectBox6" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 200.0
@@ -75,7 +75,7 @@ margin_right = 296.0
 margin_bottom = 96.0
 icon = ExtResource( 11 )
 spawn = "crossover"
-info = "Crossover - two axles"
+info = "Crossover - two axles crossing each other"
 
 [node name="SelectBox3" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 300.0
@@ -83,7 +83,7 @@ margin_right = 396.0
 margin_bottom = 96.0
 icon = ExtResource( 3 )
 spawn = "bevel"
-info = "Bevel gear - connects axles to gears"
+info = "Bevel gear - connects axles to gears."
 
 [node name="SelectBox7" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_top = 100.0
@@ -91,7 +91,7 @@ margin_right = 96.0
 margin_bottom = 196.0
 icon = ExtResource( 13 )
 spawn = "smallbevel"
-info = "Small bevel gear - good for changing speed"
+info = "Small bevel gear - works like bevel gear, but with a different ratio"
 
 [node name="SelectBox4" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 100.0
@@ -100,7 +100,7 @@ margin_right = 196.0
 margin_bottom = 196.0
 icon = ExtResource( 2 )
 spawn = "belt"
-info = "Conveyor belt - good for moving eggs :P"
+info = "Conveyor belt - moves eggs on top of it, drag for a longer belt that's easier to power"
 
 [node name="SelectBox5" parent="SideBar/CenterContainer/GridContainer" instance=ExtResource( 5 )]
 margin_left = 200.0

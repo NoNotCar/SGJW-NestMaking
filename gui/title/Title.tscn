@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://gui/button/button.tres" type="StyleBox" id=1]
 [ext_resource path="res://gui/MediumText.tres" type="DynamicFont" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://music/bonusgame.ogg" type="AudioStream" id=7]
 [ext_resource path="res://gui/title/Title.gd" type="Script" id=8]
 [ext_resource path="res://gui/volume/VolumeSlider.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gui/logo.png" type="Texture" id=10]
 
 [node name="Title" type="Control"]
 anchor_right = 1.0
@@ -21,15 +22,17 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 312.0
-margin_top = 119.0
+margin_top = 161.0
 margin_right = 712.0
-margin_bottom = 480.0
+margin_bottom = 439.0
 custom_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
@@ -41,6 +44,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 margin_top = 144.0
 margin_right = 400.0
 margin_bottom = 211.185
@@ -53,15 +57,26 @@ text = "START"
 [node name="LevelSelect" parent="CenterContainer/VBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 227.0
+margin_top = 144.0
 margin_right = 400.0
-margin_bottom = 281.0
+margin_bottom = 198.0
 
 [node name="VolumeSlider" parent="CenterContainer/VBoxContainer" instance=ExtResource( 9 )]
-margin_top = 297.0
+margin_top = 214.0
 margin_right = 400.0
-margin_bottom = 361.0
+margin_bottom = 278.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -60.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]

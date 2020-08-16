@@ -12,7 +12,7 @@
 [node name="Level4" instance=ExtResource( 1 )]
 size = Vector2( 6, 6 )
 character = ExtResource( 3 )
-goal_text = "Who put all these blocks here? Whatever, just make sure both nests have eggs - that smart motor should help..."
+goal_text = "Who put all these blocks here? Whatever, just make sure both nests have eggs."
 music = ExtResource( 8 )
 
 [node name="Camera2D" parent="." index="0"]
