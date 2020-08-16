@@ -6,6 +6,7 @@ extends HBoxContainer
 # var b = "text"
 var done:=false
 var level
+const selclass = preload("res://gui/selectbox/SelectBox.gd")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	level = load("res://level/Level%s.tscn" % registry.level).instance()
@@ -14,7 +15,8 @@ func _ready():
 	level.connect("complete",self,"on_done")
 	BlastDoors.connect("opened",self,"on_open")
 	for selector in $SideBar/CenterContainer/GridContainer.get_children():
-		selector.connect("show_info",$SideBar/VBoxContainer/Chatbox,"add_text")
+		if selector is selclass:
+			selector.connect("show_info",$SideBar/VBoxContainer/Chatbox,"add_text")
 func on_open():
 	$SideBar/VBoxContainer/Chatbox.add_text(level.goal_text)
 	
