@@ -73,7 +73,7 @@ func place():
 				"bevel":
 					smart_place(bevel,fpos)
 				"belt":
-					smart_place(belt,fpos)
+					smart_place(belt,fpos,1)
 	else:
 		if placing in simpledict:
 			var d=0.0
@@ -102,14 +102,14 @@ func place():
 					$PlaceSound.play()
 					for p in lib.iterrow(fpos,ipos):
 						spawndict[p]=new
-func smart_place(thing:PackedScene,pos:Vector2):
+func smart_place(thing:PackedScene,pos:Vector2,ex_r=0):
 	for b in registry.find("blocked",pos):
 		return
 	if abs(tpos.x)>get_parent().size.x or abs(pos.y)>get_parent().size.y:
 		return
 	var new = thing.instance()
 	new.position=pos*16
-	new.rotation=r%4*TAU/4
+	new.rotation=(r+ex_r)%4*TAU/4
 	get_parent().add_child(new)
 	spawndict[pos]=new
 	$PlaceSound.play()

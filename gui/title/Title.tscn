@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://gui/button/button.tres" type="StyleBox" id=1]
+[ext_resource path="res://gui/MediumText.tres" type="DynamicFont" id=2]
+[ext_resource path="res://gui/title/title.png" type="Texture" id=3]
+[ext_resource path="res://gui/title/StartButton.gd" type="Script" id=4]
+[ext_resource path="res://gui/button/buttondark.tres" type="StyleBox" id=5]
+[ext_resource path="res://gui/button/buttonlight.tres" type="StyleBox" id=6]
+
+[node name="Title" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 312.0
+margin_top = 194.0
+margin_right = 712.0
+margin_bottom = 405.0
+custom_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 400, 128 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 144.0
+margin_right = 400.0
+margin_bottom = 211.185
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "START"
+script = ExtResource( 4 )
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="CenterContainer/VBoxContainer/StartButton" method="_on_pressed"]

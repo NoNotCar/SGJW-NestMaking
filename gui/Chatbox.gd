@@ -12,11 +12,15 @@ func _ready():
 
 
 func add_text(text:String):
+	text_cache.clear()
 	$Label.text=""
 	for c in text:
 		text_cache.append(c)
 
 
 func _on_Timer_timeout():
-	if text_cache:
-		$Label.text+=text_cache.pop_front()
+	while text_cache:
+		var c=text_cache.pop_front()
+		$Label.text+=c
+		if c!=" ":
+			break
